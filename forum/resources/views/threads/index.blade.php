@@ -10,12 +10,14 @@
                 <div class="card-body">
                 @foreach($threads as $thread)
                 <article>
-                    <h4>{{ $thread->title }}</h4>
+                    <h4>
+                        <a href="/threads/{{ $thread->id  }}">{{ $thread->title }}</a>
+                    </h4>
                     <vid class="body">{{ $thread->body }}</vid>
-                    
                 </article>
-                 @endforeach
-                    </div>
+                <hr>
+                @endforeach
+                </div>
 
             </div>
         </div>
