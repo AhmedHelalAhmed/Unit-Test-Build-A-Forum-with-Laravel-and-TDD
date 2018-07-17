@@ -13,7 +13,7 @@
                     <h4>
                         <a href="{{ $thread->path() }}">{{ $thread->title }}</a>
                     </h4>
-                    <vid class="body">{{ $thread->body }}</vid>
+                    <div class="body">{{ $thread->body }}</div>
                 </article>
                 <hr>
                 @endforeach
