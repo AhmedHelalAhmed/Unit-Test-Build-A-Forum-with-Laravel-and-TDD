@@ -9,6 +9,10 @@ use App\User;
 
 class Thread extends Model
 {
+
+    //TODO search for guarded and the difference of it and fillable
+    protected $guarded=[];
+
     public function path()
     {
         return '/threads/'.$this->id;
@@ -29,4 +33,9 @@ class Thread extends Model
         return $this->creator->name;
     }
 
+
+    public function addReply($reply)
+    {
+        $this->replies()->create($reply);
+    }
 }
