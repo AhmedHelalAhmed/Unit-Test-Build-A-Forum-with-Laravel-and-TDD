@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Reply;
+use App\User;
 
 class Thread extends Model
 {
@@ -17,4 +18,15 @@ class Thread extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function creatorName()
+    {
+        return $this->creator->name;
+    }
+
 }
