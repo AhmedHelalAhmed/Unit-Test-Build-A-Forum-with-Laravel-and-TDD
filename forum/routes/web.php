@@ -25,4 +25,4 @@ Route::get('/threads','ThreadsController@index');
 Route::get('/threads/{thread}','ThreadsController@show');
 Route::post('/threads/{thread}/replies','RepliesController@store')->middleware('auth')->name('add_reply_to_thread');
 
-Route::post('/threads','ThreadsController@store');
+Route::post('/threads','ThreadsController@store')->middleware('auth');
