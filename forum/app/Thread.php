@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Reply;
 use App\User;
+use App\Channel;
 
 class Thread extends Model
 {
@@ -37,5 +38,10 @@ class Thread extends Model
     public function addReply($reply)
     {
         $this->replies()->create($reply);
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
     }
 }

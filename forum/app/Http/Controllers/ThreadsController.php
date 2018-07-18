@@ -44,8 +44,10 @@ class ThreadsController extends Controller
     {
         $thread=Thread::create([
             'user_id' => auth()->id(),
+           'channel_id' => request('channel_id'),
            'title' => request('title'),
-            'body' => request('body')
+            'body' => request('body'),
+
         ]);
         return redirect($thread->path());
     }
