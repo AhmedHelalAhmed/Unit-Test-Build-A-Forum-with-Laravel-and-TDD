@@ -23,7 +23,7 @@ class CreateThreadsTest extends TestCase
             ->assertRedirect('/login');
 
         // store thread data
-        $this->post('/threads/create')
+        $this->post('/threads')
             ->assertRedirect('/login');
     }
 
