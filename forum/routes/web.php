@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/threads','ThreadsController@index');
 Route::get('/threads/{thread}','ThreadsController@show');
-Route::post('/threads/{thread}/replies','RepliesController@store')->middleware('auth');
+Route::post('/threads/{thread}/replies','RepliesController@store')->middleware('auth')->name('add_reply_to_thread');
