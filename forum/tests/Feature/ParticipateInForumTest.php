@@ -28,10 +28,10 @@ class ParticipateInForumTest extends TestCase
         $this->signIn($user = factory('App\User')->create());//to make the user authenticated
 
 
-        $thread = factory('App\Thread')->create();
+        $thread = create('App\Thread');
 
-        // TODO : see the difference between make and create
-        $reply = factory('App\Reply')->make();
+
+        $reply = make('App\Reply');
         $this->post($thread->path().'/replies',$reply->toArray());
 
 

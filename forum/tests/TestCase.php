@@ -10,10 +10,14 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * to make the user authenticated
-     * @param $user
+     * @param $user //not required
      */
-    public function signIn($user)
+    protected function signIn($user = null)
     {
-        $this->be($user);
+        $user = $user ?: create('App\User');
+
+        $this->actingAs($user);
+
+        return $this;
     }
 }
