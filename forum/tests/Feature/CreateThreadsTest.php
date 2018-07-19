@@ -46,5 +46,19 @@ class CreateThreadsTest extends TestCase
     }
 
 
+    /** @test */
+    function a_thread_requires_a_title()
+    {
+        $this->withExceptionHandling()->signIn();
+
+        $thread = make('App\Thread',['title' => null]);
+
+
+        $this->post('/threads',$thread->toArray())
+            ->assertSessionHasErrors('title');
+
+    }
+
+
 
 }
