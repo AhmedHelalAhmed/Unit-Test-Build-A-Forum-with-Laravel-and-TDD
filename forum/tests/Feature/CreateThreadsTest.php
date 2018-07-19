@@ -4,8 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class CreateThreadsTest extends TestCase
 {
@@ -35,8 +34,10 @@ class CreateThreadsTest extends TestCase
         $this->signIn();
 
         // When we hit the endpoint to create a new thread
-        $thread=make('App\Thread');//make because we just need the data generated not to store it directory
+        $thread=create('App\Thread');//make because we just need the data generated not to store it directory
         $this->post('/threads',$thread->toArray());
+
+
 
 
         // Then, when we visit the thread page

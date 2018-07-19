@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,7 @@ class ThreadsController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($channelId,Thread $thread)
     {
         return view('threads.show',['thread'=>$thread]);
     }
