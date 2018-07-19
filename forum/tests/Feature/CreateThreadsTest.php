@@ -27,6 +27,8 @@ class CreateThreadsTest extends TestCase
     }
 
 
+
+
     /** @test */
     function an_authenticated_user_can_create_new_forum_threads()
     {
@@ -49,14 +51,42 @@ class CreateThreadsTest extends TestCase
     /** @test */
     function a_thread_requires_a_title()
     {
+        $this->publishThread(['title'=>null])
+            ->assertSessionHasErrors('title');
+    }
+
+
+    /** @test */
+    function a_thread_requires_a_body()
+    {
+        $this->publishThread(['body'=>null])
+            ->assertSessionHasErrors('body');
+
+    }
+
+    /** @test */
+    function a_thread_requires_a_valid_channel()
+    {
+
+        //to test the failure if the channel exist in memory which is testing database configured
+        factory('App\Channel',2)->create();
+
+
+        $this->publishThread(['channel_id' => null])
+            ->assertSessionHasErrors('channel_id');
+
+
+        $this->publishThread(['channel_id' => 99999999])
+            ->assertSessionHasErrors('channel_id');
+    }
+
+    public function publishThread($overrides = [])
+    {
         $this->withExceptionHandling()->signIn();
 
-        $thread = make('App\Thread',['title' => null]);
+        $thread = make('App\Thread',$overrides);
 
-
-        $this->post('/threads',$thread->toArray())
-            ->assertSessionHasErrors('title');
-
+        return $this->post('/threads',$thread->toArray());
     }
 
 
