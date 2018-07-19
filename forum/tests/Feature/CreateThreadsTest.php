@@ -69,7 +69,7 @@ class CreateThreadsTest extends TestCase
     {
 
         //to test the failure if the channel exist in memory which is testing database configured
-        factory('App\Channel',2)->create();
+        factory('App\Channel',2)->create();//give channel_id = 1 or 2
 
 
         $this->publishThread(['channel_id' => null])
