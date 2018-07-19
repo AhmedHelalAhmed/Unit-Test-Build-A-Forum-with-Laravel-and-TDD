@@ -12,13 +12,18 @@ class ChannelsController extends Controller
      * @param $channelSlug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($channelSlug)
+    public function show(Channel $channel)
     {
-        $channelId = Channel::where('slug',$channelSlug)->first()->id;
 
 
-        $threads= Thread::where('channel_id', $channelId)->latest()->get();
 
-        return view('threads.index',['threads'=>$threads]);
+
+        if($channel->exists)
+        {
+            $threads = $channel->threads()->latest()->get();
+        }
+
+
+        return view('threads.index',compact('threads'));
     }
 }
