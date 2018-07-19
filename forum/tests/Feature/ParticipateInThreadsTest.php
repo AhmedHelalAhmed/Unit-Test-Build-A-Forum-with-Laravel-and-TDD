@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 
-class ParticipateInThreadTest extends TestCase
+class ParticipateInThreadsTest extends TestCase
 {
 
     use DatabaseMigrations;
