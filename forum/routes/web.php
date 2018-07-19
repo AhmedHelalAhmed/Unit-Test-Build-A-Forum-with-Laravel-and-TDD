@@ -28,9 +28,7 @@ Route::get('/threads/create','ThreadsController@create')->middleware('auth');
 
 //Route::resource('threads','ThreadsController');
 
-
 Route::post('/threads/{channel}/{thread}/replies','RepliesController@store')->middleware('auth')->name('add_reply_to_thread');
 
-
-
+Route::get('threads/{channel}','ChannelsController@show');
 

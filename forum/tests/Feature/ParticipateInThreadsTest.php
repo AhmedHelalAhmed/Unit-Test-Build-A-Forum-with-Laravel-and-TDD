@@ -53,8 +53,6 @@ class ParticipateInThreadsTest extends TestCase
 
         $this->post($thread->path().'/replies',$reply->toArray())
             ->assertSessionHasErrors('body');
-
-
     }
 
 }
